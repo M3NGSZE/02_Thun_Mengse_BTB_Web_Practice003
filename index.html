@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 003</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1 class="text-center text-4xl font-bold mt-5 mb-15">
+        Hiiiii Guys, This is our Practice 3
+    </h1>
+
+    <div class="px-10 lg:px-30">
+        <div class="grid lg:grid-cols-5 gap-4">
+            <div class="lg:col-span-2 lg:px-15 pe-10">
+                <div class="mb-3">
+                    <h1 class="text-2xl font-bold">Add Task</h1>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="task">
+                        Task Name
+                    </label>
+                    <input
+                        class="bg-gray-50 focus:outline-none focus:bg-white border rounded-lg w-full py-2 px-3 text-gray-700 placeholder-gray-600 focus:border-dark-500 "
+                        id="task" type="text" placeholder="HRD Homework" required>
+                        <p class="text-red-500" id="taskName" hidden>Fill the input and task name cannot start with a space</p>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="datepicker-title">
+                        Choose Date
+                    </label>
+                    <div class="relative max-w-sm">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                        </div>
+                        <input id="datepicker-title" datepicker datepicker-format="yyyy/mm/dd" type="text" class="bg-gray-50 border text-gray-900 rounded-lg block w-full ps-10 p-2.5 focus:outline-none 
+                    dark:placeholder-gray-600 " placeholder="Select date" readonly>
+                    </div>
+                    <p class="text-red-500" id="taskDate" hidden>Pick date</p>
+                </div>
+                <div class="mb-7">
+                    <form class="max-w-sm mx-auto">
+                        <label class="block text-gray-700 text-sm font-bold mb-2 " for="datepicker-title">
+                            Priority
+                        </label>
+                        <select id="countries"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark ">
+                            <option selected class="dark:bg-gray-700 dark:text-white">Select Priority</option>
+                            <option value="High" class="dark:bg-gray-700 dark:text-white">High</option>
+                            <option value="Medium" class="dark:bg-gray-700 dark:text-white">Medium</option>
+                            <option value="Low" class="dark:bg-gray-700 dark:text-white">Low</option>
+                        </select>
+                    </form>
+                    <p class="text-red-500" id="taskPriority" hidden>Select Priority</p>
+                </div>
+                <button type="submit" onclick="addTask()"
+                    class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add New Task
+                </button>
+            </div>
+
+            <div class="lg:col-span-3 lg:px-15 pe-10">
+                <div class="mb-3">
+                    <h1 class="text-2xl font-bold">Task</h1>
+                </div>
+                <div class="mb-3">
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-50 dark:text-gray-400 text-center">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 rounded-s-lg">
+                                        TASK NAME
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        DUE DATE
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        PRIORITY
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 rounded-e-lg">
+                                        STATUS
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white text-gray-500 text-center font-medium">
+                                    <td class="px-6 py-4">
+                                        Complete JavaScript Project
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        2023/12/02
+                                    </td>
+                                    <td class="px-6 py-4 text-red-500 font-bold">
+                                        High
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <button type="button"
+                                            class="text-gray-50 bg-[#da9502] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-8 py-2 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2">
+                                            Pending
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="bg-white text-gray-500 text-center font-medium">
+                                    <td class="px-6 py-4">
+                                        Complete JavaScript Project
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        2023/12/02
+                                    </td>
+                                    <td class="px-6 py-4 text-orange-400 font-bold">
+                                        Medium
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <button type="button"
+                                            class="text-gray-50 bg-[#da9502] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-8 py-2 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 me-2 mb-2">
+                                            Pending
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
